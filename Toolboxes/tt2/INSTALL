@@ -1,0 +1,7 @@
+Add to path this directory
+by 
+addpath(pwd)
+and
+solve/ exp/ core/ cross/ misc/ tests/
+subdirectories
+(also use addpath)
