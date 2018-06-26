@@ -2,11 +2,11 @@
 currentFolder = pwd;
 addpath(genpath(currentFolder));
 %% Data preparation
-image=imread('2_lena.bmp');
+image=imread('lena.bmp');
 image=imresize(image,[256 256]);
 T=double(image)/255; % regularization
 S=size(T); N=numel(S);
-mr=0.6; % missing rate
+mr=0.5; % missing rate
 W=gen_W(S,mr);
 X=T.*W;
 r=[150,3];
@@ -17,7 +17,7 @@ r=[150,3];
 [X_hat_wopt,G_wopt]=T3C(X,W,'Alg','TTWOPT','Rank',r,'MaxIter', 1e3,'Tol', 1e-4);
 
 % TTSGD - able to deal large-scale data and low complexity
-[X_hat_sgd,G_sgd]=T3C(X,W,'Alg','TTSGD','Rank',r,'MaxIter', 5e5,'Tol', 1e-3);
+[X_hat_sgd,G_sgd]=T3C(X,W,'Alg','TTSGD','Rank',r,'MaxIter', 5e5,'Tol', 1e-4);
 
 %% Performance evaluation 
 
